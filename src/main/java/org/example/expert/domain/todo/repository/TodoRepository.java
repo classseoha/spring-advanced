@@ -12,11 +12,10 @@ import java.util.Optional;
 
 public interface TodoRepository extends JpaRepository<Todo, Long> {
 
-    // 투두와 연관된 유저를 한 번에 조인해서 가져옴 (내부적으로 LEFT JOIN FETCH t.user처럼 작동)
+    // 투두와 연관된 유저를 한 번에 조인해서 가져옴 (내부적으로 LEFT JOIN FETCH t.user처럼 작동)-
     @EntityGraph(attributePaths = {"user"})
     Page<Todo> findAllByOrderByModifiedAtDesc(Pageable pageable);
 
-    // 투두와 연관된 유저를 한 번에 조인해서 가져옴 (내부적으로 LEFT JOIN FETCH t.user처럼 작동)
     @Query("SELECT t FROM Todo t LEFT JOIN FETCH t.user WHERE t.id = :todoId")
     Optional<Todo> findByIdWithUser(@Param("todoId") Long todoId);
 
