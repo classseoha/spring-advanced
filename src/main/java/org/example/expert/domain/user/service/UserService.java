@@ -26,7 +26,7 @@ public class UserService {
     @Transactional
     public void changePassword(long userId, UserChangePasswordRequest userChangePasswordRequest) {
 
-        // 비밀번호 검증 메서드 삭제
+        // 비밀번호 검증 메서드 삭제-
 
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new InvalidRequestException("User not found"));
