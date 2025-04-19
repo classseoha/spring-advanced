@@ -26,7 +26,7 @@ public class AuthService {
     @Transactional
     public SignupResponse signup(SignupRequest signupRequest) {
 
-        // 이메일 검증 코드를 비밀번호 암호와 코드보다 상단으로 옮겨 불필요한 동작 개선
+        // 이메일 검증 코드를 비밀번호 암호와 코드보다 상단으로 옮겨 불필요한 동작 개선-
         if (userRepository.existsByEmail(signupRequest.getEmail())) {
             throw new InvalidRequestException("이미 존재하는 이메일입니다.");
         }
